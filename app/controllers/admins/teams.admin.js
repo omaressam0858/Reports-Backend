@@ -15,7 +15,8 @@ async function getSingleTeam(req,res,next){
         const team = await Team.findOne({
             where:{
                 id
-            },include: {model: User}
+            },
+            include: {model: User}
         });
         if(!team) return res.status(404).json({message: "Team not found"});
         res.json(team);

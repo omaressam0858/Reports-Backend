@@ -9,6 +9,6 @@ const Team = TeamModel(sequelize, DataTypes, Model)
 User.hasOne(Team, {foreignKey: 'id', sourceKey: 'teamId'})
 Team.hasMany(User, {foreignKey: 'teamId', sourceKey: 'id'})
 
-sequelize.sync({force: false})
+sequelize.sync({alter: true})
 
 export {User, Team}

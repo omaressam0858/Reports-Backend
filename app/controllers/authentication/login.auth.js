@@ -16,7 +16,7 @@ export default async function loginController(req, res, next) {
         const isMatch = await bcrypt.compare(password, user.password);
         if(!isMatch) return res.status(400).json({message: "Invalid credentials"});
 
-        const token = jwt.sign({id: user.id}, JWT_SECRET, {expiresIn: '1d'});
+        const token = jwt.sign({id: user.id,roleId:user.roleId}, JWT_SECRET, {expiresIn: '1d'});
         res.status(200).json({token});
     }catch(err){
         next(err)

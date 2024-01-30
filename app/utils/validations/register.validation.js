@@ -7,7 +7,7 @@ const registerSchema = joi.object({
     phoneNumber: joi.string().required().min(5).max(15),
     gameUserName: joi.string().required().min(3).max(32),
     roleId: joi.number().required().min(0).max(1),
-    teamId: joi.number().required()
+    teamId: joi.number().required().unsafe()
 })
 
 export default registerSchema;

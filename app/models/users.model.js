@@ -40,11 +40,8 @@ export default function UserModel(sequelize, DataTypes, Model) {
         },
         teamId: {
             type: DataTypes.INTEGER,
-            required: true,
-            allowNull: false
+            allowNull: true
         }
-    
-
     }, {
     sequelize,
         modelName: 'User',

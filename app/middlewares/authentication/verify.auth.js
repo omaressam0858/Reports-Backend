@@ -12,6 +12,7 @@ export default async function verifyMiddleware(req, res, next) {
         req.user = user;
         next();
     }catch(err){
+        if(err.name === "JsonWebTokenError") return res.status(401).json({message: "Unauthorized"});
         next(err)
     }
 }
