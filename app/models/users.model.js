@@ -51,7 +51,7 @@ export default function UserModel(sequelize, DataTypes, Model) {
     });
 
     User.beforeCreate(async (user, options) => {
-        user.password = await bcrypt.hash(user.password);
+        user.password = await bcrypt.hash(user.password,10);
     })
 return User;
 };
