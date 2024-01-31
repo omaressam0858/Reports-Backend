@@ -1,6 +1,6 @@
 {
   "name": "eagles-backend",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Eagles Adminstration Web App Server",
   "type": "module",
   "main": "index.js",

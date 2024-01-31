@@ -10,4 +10,7 @@ mainRouter.use('/auth', authRouter)
 mainRouter.use('/admin', adminRouter)
 mainRouter.use('/player', playerRouter)
 mainRouter.use('/coach', coachRouter)
+
+
+mainRouter.use('/version' ,(req, res) => res.send('1.0.0'))
 export default mainRouter
