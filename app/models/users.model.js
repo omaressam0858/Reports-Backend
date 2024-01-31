@@ -25,7 +25,6 @@ export default function UserModel(sequelize, DataTypes, Model) {
         },
         roleId: {
             type: DataTypes.SMALLINT, // 0: player, 1: coach, 2: admin
-            required: true,
             defaultValue: 0
         },
         phoneNumber: {
@@ -39,13 +38,13 @@ export default function UserModel(sequelize, DataTypes, Model) {
             allowNull: false
         },
         teamId: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT,
             allowNull: true
         }
     }, {
     sequelize,
         modelName: 'User',
-    });
+    })
 
     User.beforeCreate(async (user, options) => {
         user.password = await bcrypt.hash(user.password,10);

@@ -15,7 +15,7 @@ coachRouter.get('/team', getCoachTeam)
 
 coachRouter.get('/reports', getTeamReport)
 coachRouter.get('/reports/:id', getSingleReport)
-coachRouter.put('/reports/:id/accept', acceptReport)
-coachRouter.put('/reports/:id/reject', rejectReport)
+coachRouter.post('/reports/:id/accept', acceptReport)
+coachRouter.post('/reports/:id/reject', rejectReport)
 
 export default coachRouter

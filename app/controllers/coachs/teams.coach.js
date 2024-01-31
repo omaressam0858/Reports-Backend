@@ -3,7 +3,7 @@ import {User, Team} from "../../models/index.js";
 async function getCoachTeam(req,res,next){
     try{
         const {id} = req.user.Team;
-        const team = await Team.find({
+        const team = await Team.findOne({
             where:{
                 id
             },

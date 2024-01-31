@@ -5,7 +5,8 @@ async function getTeamReport(req,res,next){
         const reports = await Report.findAll({
             include: [
                 {model: Team},
-                {model: User, as: "responder"}
+                {model: User, as: "responder"},
+                {model: User, as: "user"}
             ],
             where:{
                 teamId: req.user.teamId
@@ -22,11 +23,13 @@ async function getSingleReport(req,res,next){
         const {id} = req.params;
         const report = await Report.findOne({
             where:{
-                id
+                id,
+                teamId: req.user.teamId
             },
             include: [
                 {model: Team},
-                {model: User, as: "responder"}
+                {model: User, as: "responder"},
+                {model: User, as: "user"}
             ]
         });
         if(!report) return res.status(404).json({message: "Report not found"});

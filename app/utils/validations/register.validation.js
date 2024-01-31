@@ -6,7 +6,7 @@ const registerSchema = joi.object({
     password: joi.string().required().min(8).max(32),
     phoneNumber: joi.string().required().min(5).max(15),
     gameUserName: joi.string().required().min(3).max(32),
-    roleId: joi.number().required().min(0).max(1),
+    roleId: joi.number().min(0).max(1),
     teamId: joi.number().required().unsafe()
 })
 
