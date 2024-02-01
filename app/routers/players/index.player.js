@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { postReport, getPlayerReports } from '../../controllers/players/reports.player.js';
+import  {postReport,getSingleReport , getPlayerReports} from '../../controllers/players/reports.player.js';
 import getPlayerTeam from '../../controllers/players/teams.player.js';
 
 
@@ -12,6 +12,7 @@ playerRouter.use(verifyMiddleware)
 
 playerRouter.post('/reports', postReport)
 playerRouter.get('/reports', getPlayerReports)
+playerRouter.get('/reports/:reportId', getSingleReport)
 
 playerRouter.get('/team', getPlayerTeam)
 

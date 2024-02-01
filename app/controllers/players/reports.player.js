@@ -14,6 +14,26 @@ async function postReport(req,res,next){
     }
 } 
 
+async function getSingleReport(req,res,next){
+    const user = req.user;
+    const {reportId} = req.params;
+    try{
+        const report = await Report.findOne(
+            {
+                where:{id:reportId,userId:user.id},
+                include: [
+                    {model: Team},
+                    {model: User, as: "responder"}
+                ]
+            }
+        );
+        res.json(report);
+    }
+    catch(err){
+        next(err)
+    }
+}
+
 async function getPlayerReports(req,res,next){
     const user = req.user;
     try{
@@ -33,4 +53,4 @@ async function getPlayerReports(req,res,next){
 }
 
 
-export {postReport, getPlayerReports}
+export {postReport,getSingleReport , getPlayerReports}
