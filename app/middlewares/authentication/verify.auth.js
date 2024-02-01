@@ -4,7 +4,7 @@ import { JWT_SECRET } from "../../config.js";
 
 export default async function verifyMiddleware(req, res, next) {
     try{
-        const token = req.headers.authorization;
+        const token = req.headers.Authorization;
         if(!token) return res.status(401).json({message: "Unauthorized"});
         const decoded = jwt.verify(token, JWT_SECRET);
         const user = await User.findByPk(decoded.id,
