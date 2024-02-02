@@ -42,7 +42,8 @@ async function getPlayerReports(req,res,next){
                 where:{userId:user.id},
                 include: [
                     {model: Team},
-                    {model: User, as: "responder"}
+                    {model: User, as: "responder"},
+                    {model: User, as: "user"}
                 ]
             }
         );
