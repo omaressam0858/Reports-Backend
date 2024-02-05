@@ -1,9 +1,12 @@
 import { User,Team } from "../../models/index.js";
+import { Op } from "sequelize";
 
 async function getAllPlayers(req,res,next){
     try{
         const players = await User.findAll({
-            order: [
+            where:{
+                roleId: {[Op.ne]: 2}
+            },order: [
                 ['teamId', 'DESC']
             ],
             include: {model: Team}
