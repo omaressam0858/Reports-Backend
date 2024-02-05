@@ -3,9 +3,7 @@ import { User,Team } from "../../models/index.js";
 async function getAllPlayers(req,res,next){
     try{
         const players = await User.findAll({
-            where:{
-                roleId: 0
-            },order: [
+            order: [
                 ['teamId', 'DESC']
             ],
             include: {model: Team}
