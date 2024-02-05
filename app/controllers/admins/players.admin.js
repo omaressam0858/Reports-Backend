@@ -22,7 +22,8 @@ async function removePlayer (req,res,next) {
         const {id} = req.params;
         const player = await User.findOne({
             where: {
-                id
+                id,
+                roleId: {[Op.ne]: 2}
             }
         });
         if(!player) return res.status(404).json({message: "Player not found"});
