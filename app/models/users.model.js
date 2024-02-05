@@ -16,7 +16,8 @@ export default function UserModel(sequelize, DataTypes, Model) {
         email: {
             type: DataTypes.TEXT,
             required: true,
-            allowNull: false
+            allowNull: false,
+            unique: true
         },
         password: {
             type: DataTypes.TEXT,

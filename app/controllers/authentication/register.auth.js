@@ -11,6 +11,9 @@ export default async function registerController(req, res, next) {
 
         res.json(user);
     }catch(err){
+        if (err.name === 'SequelizeUniqueConstraintError') {
+            return res.status(400).json({message: 'Email already exists'});
+        }
         next(err)
     }
 }
