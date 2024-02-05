@@ -39,7 +39,8 @@ async function getSinglePlayer(req,res,next){
         const player = await User.findOne({
             where:{
                 id
-            }
+            },
+            include: {model: Team}
         });
         if(!player) return res.status(404).json({message: "Player not found"});
         res.json(player);
