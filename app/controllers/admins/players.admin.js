@@ -33,4 +33,19 @@ async function removePlayer (req,res,next) {
     }
 }
 
-export {getAllPlayers,removePlayer}
+async function getSinglePlayer(req,res,next){
+    try{
+        const {id} = req.params;
+        const player = await User.findOne({
+            where:{
+                id
+            }
+        });
+        if(!player) return res.status(404).json({message: "Player not found"});
+        res.json(player);
+    }catch(err){
+        next(err)
+    }
+}
+
+export {getAllPlayers,getSinglePlayer,removePlayer}
