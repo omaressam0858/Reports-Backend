@@ -7,7 +7,7 @@ async function getCoachTeam(req,res,next){
             where:{
                 id
             },
-            include: {model: User}
+            include: {model: User , attributes: ['name','gameUserName','email','roleId']},
         });
         if(!team) return res.status(404).json({message: "Team not found"});
         res.json(team);
