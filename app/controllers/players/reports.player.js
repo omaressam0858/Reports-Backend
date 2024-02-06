@@ -23,8 +23,8 @@ async function getSingleReport(req,res,next){
                 where:{id:reportId,userId:user.id},
                 include: [
                     {model: Team},
-                    {model: User, as: "responder"},
-                    {model: User, as: "user"}
+                    {model: User, as: "responder" , attributes: ['name','gameUserName','email','roleId']},
+                    {model: User, as: "user" , attributes: ['name','gameUserName','email','roleId']}
                 ]
             }
         );
@@ -43,7 +43,7 @@ async function getPlayerReports(req,res,next){
                 where:{userId:user.id},
                 include: [
                     {model: Team},
-                    {model: User, as: "responder"},
+                    {model: User, as: "responder" , attributes: ['name','gameUserName','email','roleId']},
                 ]
             }
         );
