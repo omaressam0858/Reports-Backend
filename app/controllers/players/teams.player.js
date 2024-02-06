@@ -7,7 +7,8 @@ async function getPlayerTeam(req,res,next){
             where:{
                 id
             },
-            include: {model: User, attributes: ['name','gameUserName','email','roleId']}
+            include: {model: User, attributes: ['name','gameUserName','email','roleId']},
+            order : [[User, 'roleId', 'DESC']]
         }); 
         if(!team) return res.status(404).json({message: "Team not found"});
         res.json(team);
