@@ -41,6 +41,10 @@ export default function UserModel(sequelize, DataTypes, Model) {
         teamId: {
             type: DataTypes.BIGINT,
             allowNull: true
+        },
+        firstLogin: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
         }
     }, {
     sequelize,
@@ -49,6 +53,12 @@ export default function UserModel(sequelize, DataTypes, Model) {
 
     User.beforeCreate(async (user, options) => {
         user.password = await bcrypt.hash(user.password,10);
+    })
+
+    User.beforeUpdate(async (user, options) => {
+        if(user.changed('password')){
+            user.password = await bcrypt.hash(user.password,10);
+        }
     })
 return User;
 };
